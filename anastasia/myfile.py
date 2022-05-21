@@ -99,8 +99,10 @@ def anastasia_game():
 
         if vidas > 0:
             print("\nGanaste!")
+            return True
         else:
             print("\nHas perdido. La palabra era: ", secretword)
+            return False
     main()
     
 anastasia_game()
