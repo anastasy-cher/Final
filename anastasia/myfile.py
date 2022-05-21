@@ -10,7 +10,7 @@ def anastasia_game():
     def welcome():
         
         print("\nBienvenido al juego de adivinar palabras!")
-        print("\nAdivina la palabra letra por letra.\n\nTienes 5 vidas y ayuda - una letra abierta.\n\nAl utilizar la ayuda - te bajarán 50 puntos, al derrotar al boss.")
+        print("\nAdivina la palabra letra por letra.\n\nTienes 5 vidas y ayuda - letra abierta.\n")
 
     def generar_palabra():
         print("\nPensando en la palabra secreta...")
@@ -21,16 +21,10 @@ def anastasia_game():
         print("\n"," _ " *len(secretword))
         
         return secretword
-        
-    def restar_vida(x):
-        
-        x-= 1
-        print("\n\nJaja! Te equivocsaste!\n\nTe quedan",x, "vidas.")
-
                 
     def help(secretword):
             
-            print("\n\nPor lo visto esta adivinanza está difícil para ti...\nBueno... Te bajo la puntuación y seguimos!")
+            print("\n\nPor lo visto esta adivinanza está difícil para ti...\nBueno...")
             
             help_l= random.choice(list(secretword))
             print("\nLa letra de ayuda, que te ha tocado es '", help_l,"'")
@@ -45,13 +39,8 @@ def anastasia_game():
                 cont += " _ "
                 letras_faltan += 1
                 
-        print(cont)
-        if letras_faltan == 0:
-            print("Ganaste!")
-        
+        print(cont)        
         return cont
-                
-        
                 
     def main():
         
@@ -72,13 +61,12 @@ def anastasia_game():
                 
             elif u == "no" or u == "n":
                 print("\nYa veo... Tienes miedo! Mejor...")
-                return 99
             
             else:
                 print("\nCarecter equivocado.\nIntenta de nuevo")
                         
-        x = 0
-        while vidas > 0 and secretword != x:
+        letras_acertadas = 0
+        while vidas > 0 and secretword != letras_acertadas:
             letra = input("\nIntroduce letra o 33 para ayuda: ")
             letra = letra.lower()
             
@@ -90,12 +78,10 @@ def anastasia_game():
                 print("\nJaja! Te equivocsaste!\n\nTe quedan",vidas, "vidas.")
             
             elif letra in secretword:
-                print();print()
-                print("Acertaste la letra")
-                
+
+                print("\n\nAcertaste la letra")
                 lista_acertada.append(letra)
-                
-                x = agrupar_letras(secretword,lista_acertada,cont,letras_faltan)
+                letras_acertadas = agrupar_letras(secretword,lista_acertada,cont,letras_faltan)
 
         if vidas > 0:
             print("\nGanaste!")
